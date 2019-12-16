@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Cliente } from '../clientes/cliente';
 import { ClienteServiceService } from '../../servicios/cliente-service.service';
 import { Router } from '@angular/router';
+import  swal from 'sweetalert2';
 
 @Component({
   selector: 'app-crear-cliente',
@@ -21,9 +22,10 @@ export class CrearClienteComponent implements OnInit {
     console.log("Datos del usuario "+this.cliente.nombres);
     this.service.crearCliente(this.cliente).subscribe(
       reponse => {
-        this.router.navigate(['/clientes']);
+        this.router.navigate(['/clientes'])
+        swal.fire('Cliente Guardado', `Cliente ${this.cliente.nombres} creado con exito`, 'success');
       }
-    )
+    );
   }
 
 }
