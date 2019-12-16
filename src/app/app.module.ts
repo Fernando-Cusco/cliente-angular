@@ -29,6 +29,11 @@ const routes: Routes = [
   {
     path: 'clientes/crear',
     component: CrearClienteComponent
+  },
+  {
+    //para enviar un parametro por la url
+    path: 'clientes/crear/:id',
+    component: CrearClienteComponent
   }
 ];
 

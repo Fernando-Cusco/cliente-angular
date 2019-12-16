@@ -2,7 +2,7 @@
     <div class="card-header"></div>
     <div class="card-body">
 
-        <form (ngSubmit)="crear()">
+        <form>
             <div class="form-group row">
                 <label for="nombres" class="col-form-label col-sm-2">Nombres: </label>
                 <div class="col-sm-6">
@@ -25,7 +25,10 @@
 
                 <div class="form-group row">
                     <div class="col-sm-6">
-                        <button class="btn btn-primary" role="button">Crear</button>
+                        <button class="btn btn-primary" role="button" (click)="crear()" *ngIf="!cliente.id else elseBlock">Crear</button>
+                        <ng-template #elseBlock>
+                            <button class="btn btn-primary" role="button" (click)="actualizarCliente()">Actualizar</button>
+                        </ng-template>
                     </div>
                 </div> 
             </div>

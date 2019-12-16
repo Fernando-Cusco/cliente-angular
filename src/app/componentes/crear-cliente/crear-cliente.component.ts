@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from '../clientes/cliente';
 import { ClienteServiceService } from '../../servicios/cliente-service.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import  swal from 'sweetalert2';
 
 @Component({
@@ -13,9 +13,12 @@ export class CrearClienteComponent implements OnInit {
 
   cliente: Cliente = new Cliente();
 
-  constructor(private service: ClienteServiceService, private router: Router) { }
+  constructor(private service: ClienteServiceService, 
+              private router: Router,
+              private actRouter: ActivatedRoute) { }
 
   ngOnInit() {
+    this.buscarCliente();
   }
 
   crear() {
@@ -26,6 +29,26 @@ export class CrearClienteComponent implements OnInit {
         swal.fire('Cliente Guardado', `Cliente ${this.cliente.nombres} creado con exito`, 'success');
       }
     );
+  }
+
+  
+  buscarCliente() {
+    //obtenemos el id que llega por la url mediante un obeservable
+    this.actRouter.params.subscribe(params => {
+      let id = params['id']
+      if (id) {
+        this.service.getCliente(id).subscribe(cliente => {
+          this.cliente = cliente;
+        });
+      }
+    })
+  }
+
+  actualizarCliente() {
+    this.service.actualizar(this.cliente).subscribe(cliente => {
+      this.router.navigate(['/clientes'])
+      swal.fire('Cliente Actualizado', `Cliente ${this.cliente.nombres} ha sido actualizado con exito`, 'success');
+    });
   }
 
 }
