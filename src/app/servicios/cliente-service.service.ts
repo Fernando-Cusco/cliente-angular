@@ -24,7 +24,7 @@ export class ClienteServiceService {
     return this.http.post<Cliente>(this.url, cliente, {headers: this.httpHeaders});
   }
 
-  getCliente(id): Observable<Cliente> {
+  getCliente(id: number): Observable<Cliente> {
     return this.http.get<Cliente>(`${this.url}/${id}`);
   }
 
@@ -32,5 +32,8 @@ export class ClienteServiceService {
     return this.http.put<Cliente>(`${this.url}/${cliente.id}`, cliente, {headers: this.httpHeaders});
   }
 
+  eliminar(id: number): Observable<Cliente> {
+    return this.http.delete<Cliente>(`${this.url}/${id}`, {headers: this.httpHeaders});
+  }
 
 }

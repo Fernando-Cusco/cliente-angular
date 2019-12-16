@@ -15,6 +15,7 @@
                         <th>Email</th>
                         <th>CreatAt</th>
                         <th>Editar</th>
+                        <th>Eliminar</th>
                     </tr>
                 </thead>
 
@@ -37,6 +38,9 @@
                         </td>
                         <td>
                             <button class="btn btn-primary" [routerLink]="['/clientes/crear', c.id]" routerLinkActive="router-link-active" >Editar</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger"  (click)="eliminarCliente(c)" >Eliminar</button>
                         </td>
                     </tr>
                 </tbody>
