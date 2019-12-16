@@ -10,6 +10,8 @@ import { ClienteServiceService } from './servicios/cliente-service.service';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { CrearClienteComponent } from './componentes/crear-cliente/crear-cliente.component';
+import { FormsModule } from '@angular/forms';
+
 const routes: Routes = [
   {
     path: '',
@@ -25,7 +27,7 @@ const routes: Routes = [
     component: ClientesComponent
   },
   {
-    path: 'crear',
+    path: 'clientes/crear',
     component: CrearClienteComponent
   }
 ];
@@ -43,7 +45,8 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [ClienteServiceService],
   bootstrap: [AppComponent]

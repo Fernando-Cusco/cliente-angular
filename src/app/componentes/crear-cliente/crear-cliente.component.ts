@@ -8,7 +8,7 @@ import { Cliente } from '../clientes/cliente';
 })
 export class CrearClienteComponent implements OnInit {
 
-  private cliente: Cliente = new Cliente();
+  cliente: Cliente = new Cliente();
 
   constructor() { }
 
@@ -16,7 +16,7 @@ export class CrearClienteComponent implements OnInit {
   }
 
   crear() {
-    console.log("Datos del usuario "+this.cliente);
+    console.log("Datos del usuario "+this.cliente.nombres);
     
   }
 
