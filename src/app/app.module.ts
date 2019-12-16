@@ -8,7 +8,8 @@ import { DirectivaComponent } from './componentes/directiva/directiva.component'
 import { ClientesComponent } from './componentes/clientes/clientes.component';
 import { ClienteServiceService } from './servicios/cliente-service.service';
 import { RouterModule, Routes } from '@angular/router';
-
+import { HttpClientModule } from '@angular/common/http';
+import { CrearClienteComponent } from './componentes/crear-cliente/crear-cliente.component';
 const routes: Routes = [
   {
     path: '',
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'clientes',
     component: ClientesComponent
+  },
+  {
+    path: 'crear',
+    component: CrearClienteComponent
   }
 ];
 
@@ -32,11 +37,13 @@ const routes: Routes = [
     FooterComponent,
     DirectivaComponent,
     ClientesComponent,
+    CrearClienteComponent,
     
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    HttpClientModule
   ],
   providers: [ClienteServiceService],
   bootstrap: [AppComponent]
